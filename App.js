@@ -6,7 +6,6 @@ import axios from 'axios';
 export default function App() {
   const [data,setData] = useState([]);
   const [list,setList] = useState([]);
-  const [display,setDisplay] = useState(false);
   const [id,setId] = useState();
 
   const url = "https://auntieanne-demo.proseller.io/product/api/productpreset/loadcategory/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/";
@@ -19,7 +18,6 @@ export default function App() {
 
   function Press(id){
     axios.post(urlItem + id).then(function(res){
-      console.log(res.data.data);
       setList(res.data.data);
       setId();
     })
