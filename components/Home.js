@@ -27,9 +27,11 @@ export default function Home({navigation}){
       dispatch(setNavId(id));
     }
   
-    function DescPressIn(id,nav){
+    function DescPressIn(item){
       navigation.navigate('Description', {
-        id : id,
+        itemName : item.name,
+        itemImage : item.product.defaultImageURL,
+        itemDescription : item.product.description
       });
     }
       return (
@@ -56,7 +58,7 @@ export default function Home({navigation}){
             {list.map(function(item,index){
               return (
                 <View style={styles.list} key={item.id}>
-                  <TouchableOpacity onPress={()=>{DescPressIn(item.id,navId)}} >
+                  <TouchableOpacity onPress={()=>{DescPressIn(item)}} >
                   <Text style={styles.name}>{item.name}</Text>
                   <Image style={styles.image} source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
                   <Text style={styles.flex}>${item.product.retailPrice}</Text>

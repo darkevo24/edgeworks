@@ -4,35 +4,13 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function Description({route}){
-    const {id} = route.params;
-    const [list,setList] = useState([]);
-    const navId = useSelector(function(state){
-        return state.var.navId;
-      });
-    const urlItem = "https://auntieanne-demo.proseller.io/product/api/productpreset/loaditems/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/";
-    useEffect(function(){
-        axios.post(urlItem + navId).then(function(res){
-            setList(res.data.data);
-        }).catch(function(err){
-            console.log(err);
-        })
-    },[id])
+    const {itemName,itemImage,itemDescription} = route.params;
     return (
-        <View>
-            {list.map(function(item){
-                return (
-                    <View key={item.id}>
-                        {item.id == id &&
-                        <View key={item.id}>
-                        <Text style={styles.name}>{item.name}</Text>
-                        <Image style={styles.image} source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
-                        <Text style={styles.flex}>{item.product.description}</Text>
-                        </View>
-                        }
-                    </View>
-                )
-            })}
-        </View>
+    <View >
+        <Text style={styles.name}>{itemName}</Text>
+        <Image style={styles.image} source={{ uri:itemImage,width:100,height:100}} />
+        <Text style={styles.flex}>{itemDescription}</Text>
+    </View>
     )
 }
 
