@@ -6,6 +6,9 @@ import axios from 'axios';
 export default function App() {
   const [data,setData] = useState([]);
   const [list,setList] = useState([]);
+  const [display,setDisplay] = useState(false);
+  const [id,setId] = useState();
+
   const url = "https://auntieanne-demo.proseller.io/product/api/productpreset/loadcategory/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/";
   const urlItem = "https://auntieanne-demo.proseller.io/product/api/productpreset/loaditems/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/"
   useEffect(function(){
@@ -17,7 +20,12 @@ export default function App() {
   function Press(id){
     axios.post(urlItem + id).then(function(res){
       setList(res.data.data);
+      setId();
     })
+  }
+
+  function DescPressIn(index){
+    setId(index);
   }
   return (
     <View style={styles.container}>
@@ -40,12 +48,16 @@ export default function App() {
       <View>
         <ScrollView
           showsVerticalScrollIndicator={false}>
-        {list.map(function(item){
+        {list.map(function(item,index){
           return (
             <View style={styles.list} key={item.id}>
+              <TouchableOpacity onPress={()=> DescPressIn(index)} >
               <Text style={styles.name}>{item.name}</Text>
-              <Text>{item.product.description}</Text>
               <Image source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
+              {(id == index) && 
+                <Text>{item.product.description}</Text>
+              }
+              </TouchableOpacity>
             </View>
           )
         })}
@@ -78,5 +90,5 @@ const styles = StyleSheet.create({
   },
   name : {
     fontWeight:"bold"
-  }
+  },
 });
