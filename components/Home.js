@@ -1,19 +1,14 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, Image, TouchableOpacity, View,ScrollView } from 'react-native';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
-import { setNavId } from '../redux/varSlice';
 
 export default function Home({navigation}){
     const [data,setData] = useState([]);
     const [list,setList] = useState([]);
-    const navId = useSelector(function(state){
-      return state.var.navId;
-    });
-    const dispatch = useDispatch()
   
     const url = "https://auntieanne-demo.proseller.io/product/api/productpreset/loadcategory/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/";
     const urlItem = "https://auntieanne-demo.proseller.io/product/api/productpreset/loaditems/webOrdering/64e4e47b-b428-4ee3-97f5-62bfa03c8ba6/"
+    
     useEffect(function(){
       axios.post(url).then(function(res){
         setData(res.data.data);
@@ -24,7 +19,6 @@ export default function Home({navigation}){
       axios.post(urlItem + id).then(function(res){
         setList(res.data.data);
       });
-      dispatch(setNavId(id));
     }
   
     function DescPressIn(item){
