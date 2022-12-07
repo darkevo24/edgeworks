@@ -11,14 +11,11 @@ export default function App() {
   useEffect(function(){
     axios.post(url).then(function(res){
       setData(res.data.data);
-      console.log(res.data.data);
     })
   },[])
 
   function Press(id){
-    console.log("id : ",id);
     axios.post(urlItem + id).then(function(res){
-      console.log("item-id " , res.data);
       setList(res.data.data);
     })
   }
@@ -44,7 +41,6 @@ export default function App() {
         <ScrollView
           showsVerticalScrollIndicator={false}>
         {list.map(function(item){
-          console.log(item.product.defaultImageURL);
           return (
             <View style={styles.list} key={item.id}>
               <Text style={styles.name}>{item.name}</Text>
