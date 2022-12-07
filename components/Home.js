@@ -30,7 +30,6 @@ export default function Home({navigation}){
     function DescPressIn(id,nav){
       navigation.navigate('Description', {
         id : id,
-        navId : navId
       });
     }
       return (
