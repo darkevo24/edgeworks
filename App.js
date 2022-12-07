@@ -28,7 +28,6 @@ export default function App() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        nestedScrollEnabled = {true}
         contentContainerStyle={styles.ScrollView} >
       {data.map(function(item){
         return (
@@ -42,6 +41,8 @@ export default function App() {
       </ScrollView>
       </View>
       <View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}>
         {list.map(function(item){
           console.log(item.product.defaultImageURL);
           return (
@@ -52,6 +53,7 @@ export default function App() {
             </View>
           )
         })}
+        </ScrollView>
       </View>
     </View>
   );
