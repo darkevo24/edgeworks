@@ -1,7 +1,4 @@
-import { useEffect,useState } from 'react';
 import { StyleSheet, Text, Image, View } from 'react-native';
-import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
 
 export default function Description({route}){
     const {itemName,itemImage,itemDescription} = route.params;
