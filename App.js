@@ -55,7 +55,7 @@ export default function App() {
               <TouchableOpacity onPress={()=> DescPressIn(index)} >
               <Text style={styles.name}>{item.name}</Text>
               <Image style={styles.image} source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
-              <Text style={styles.flex}>{item.product.retailPrice}</Text>
+              <Text style={styles.flex}>${item.product.retailPrice}</Text>
               {(id == index) && 
                 <Text style={styles.flex}>{item.product.description}</Text>
               }
