@@ -91,12 +91,14 @@ export default function Home({navigation}){
       display : "flex",
       justifyContent : "center",
       alignItems : 'center',
-      fontWeight:"bold"
+      fontWeight:"bold",
+      textAlign : 'center'
     },
     flex : {
       display : "flex",
       justifyContent : 'center',
-      alignItems : "center"
+      alignItems : "center",
+      textAlign : 'center'
     },
     image : {
       // display: 'block',
