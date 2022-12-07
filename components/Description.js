@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
         display : "flex",
         justifyContent : "center",
         alignItems : 'center',
-        fontWeight:"bold",
-        margin : 20
+        fontWeight: "bold",
+        margin : 20,
+        textAlign : "center"
     },
     image : {
-        display: 'block',
         marginLeft: 'auto',
         marginRight: 'auto',
       },
