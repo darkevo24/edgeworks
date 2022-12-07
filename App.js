@@ -19,6 +19,7 @@ export default function App() {
 
   function Press(id){
     axios.post(urlItem + id).then(function(res){
+      console.log(res.data.data);
       setList(res.data.data);
       setId();
     })
@@ -53,9 +54,10 @@ export default function App() {
             <View style={styles.list} key={item.id}>
               <TouchableOpacity onPress={()=> DescPressIn(index)} >
               <Text style={styles.name}>{item.name}</Text>
-              <Image source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
+              <Image style={styles.image} source={{ uri:item.product.defaultImageURL,width:100,height:100}} />
+              <Text style={styles.flex}>{item.product.retailPrice}</Text>
               {(id == index) && 
-                <Text>{item.product.description}</Text>
+                <Text style={styles.flex}>{item.product.description}</Text>
               }
               </TouchableOpacity>
             </View>
@@ -89,6 +91,19 @@ const styles = StyleSheet.create({
     margin : 20
   },
   name : {
+    display : "flex",
+    justifyContent : "center",
+    alignItems : 'center',
     fontWeight:"bold"
   },
+  flex : {
+    display : "flex",
+    justifyContent : 'center',
+    alignItems : "center"
+  },
+  image : {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
 });
